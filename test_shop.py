@@ -69,15 +69,17 @@ class TestCart:
         cart.remove_product(product, 1)
         assert cart.products[product] == 4
 
-    def test_remove_all_products(self, cart_with_product):
+    def test_remove_all(self, cart_with_product):
         cart, product = cart_with_product
-        cart.remove_product(product)
-        assert product not in cart.products
+        cart.add_product(product, 300)
+        cart.remove_product(product, 300)
+        assert cart.products.get(product, 5) == 5
 
     def test_remove_many_products(self, cart_with_product):
         cart, product = cart_with_product
         cart.remove_product(product, 10)
         assert product not in cart.products
+
 
     def test_clear(self, cart_with_product):
         cart, product = cart_with_product

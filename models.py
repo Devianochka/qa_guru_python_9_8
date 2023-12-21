@@ -87,14 +87,6 @@ class Cart:
         Учтите, что товаров может не хватать на складе.
         В этом случае нужно выбросить исключение ValueError
         """
-        items = list(self.products.items())
-        for item in items:
-            if item[0].quantity < item[1]:
-                raise ValueError
-        for item in items:
-            product = item[0]
-            quantity = item[1]
+        for product, quantity in self.products.items():
             product.buy(quantity)
         self.clear()
-
-
