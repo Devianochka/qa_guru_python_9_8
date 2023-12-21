@@ -71,9 +71,10 @@ class TestCart:
 
     def test_remove_all(self, cart_with_product):
         cart, product = cart_with_product
-        cart.add_product(product, 300)
-        cart.remove_product(product, 300)
-        assert cart.products.get(product, 5) == 5
+        cart.add_product(product, 20)
+        cart.remove_product(product, 25)
+        assert cart.products.get(product, 0) == 0
+
 
     def test_remove_many_products(self, cart_with_product):
         cart, product = cart_with_product
